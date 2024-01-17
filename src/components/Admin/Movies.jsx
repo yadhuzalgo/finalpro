@@ -1,40 +1,49 @@
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import React, { useState } from 'react'
 import './Movies.css'
+import axios from 'axios';
 
 const Movies = () => {
     var [inputs,setInputs]=useState({
         "MovieID":'',
          "MovieName":'',
          "Discription":'',
-         "Language":'',
-         "Genre":'Thriller'
+         "Language":'English',
+         "Genre":'Action'
      });
      const inputHandler =(event) =>{
         const {name,value}=event.target 
         setInputs((inputs) =>({...inputs,[name]:value}))
         console.log(inputs)
     }
-    const saveData=()=>{
-        const formdata=new FormData();
-        formdata.append('MovieId',inputs.MovieID);
-        formdata.append('MovieName',inputs.MovieName);
-        formdata.append('Discription',inputs.Discription);
-        formdata.append('Language',inputs.Language);
-        formdata.append('Genre',inputs.Genre);
+    const addHandler=()=>
+    {
+    axios.post("http://localhost:3005/new",inputs)
+    .then((response)=>{
+      alert("Record saved");
+    })
+.catch((err)=>console.log(err));
+  };
 
-        fetch('http://localhost:3005/new',{
-            method:'post',
-            body:formdata,
-        })
-        .then ((response)=>response.json())
-        .then ((data)=>{
-            alert("record is saved")
-        })
-        .catch ((err)=>{
-            console.log("error")
-        })
-    }
+    // const saveData=()=>{
+    //     const formdata=new FormData();
+    //     formdata.append('MovieId',inputs.MovieID);
+    //     formdata.append('MovieName',inputs.MovieName);
+    //     formdata.append('Discription',inputs.Discription);
+    //     formdata.append('Language',inputs.Language);
+    //     formdata.append('Genre',inputs.Genre);
+    //     fetch('http://localhost:3005/new',{
+    //         method:'post',
+    //         body:formdata,
+    //     })
+    //     .then ((response)=>response.json())
+    //     .then ((data)=>{
+    //         alert("record is saved")
+    //     })
+    //     .catch ((err)=>{
+    //         console.log("error")
+    //     })
+    // }
  
   return (
     <div className='yad'>
@@ -75,7 +84,7 @@ const Movies = () => {
     <MenuItem value={"Fantasy"}>Fantasy</MenuItem>
   </Select>
  </FormControl><br/><br/>
- <Button onClick={saveData} variant='contained'>Submit</Button>
+ <Button onClick={addHandler} variant='contained'>Submit</Button>
     </div>
   )
 }
