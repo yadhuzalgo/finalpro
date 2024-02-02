@@ -7,12 +7,14 @@ const Movieedit = (props) => {
     const inputHandler=(event)=>{
         const {name,value}=event.target
         setInputs((inputs)=>({...inputs,[name]:value}))
+        console.log(inputs)
     }
     const addHandler=()=>{
         if(props.method==='put'){
-            axios.put("http://localhost:3005/edit"+inputs._id,inputs)
+            axios.put("http://localhost:3005/edit/"+inputs._id,inputs)
             .then(response=>{
-                alert("record updated")
+              console.log("data"+response.data)
+                alert("Record updated")
                 window.location.reload(false);
             })
             .catch(err=>console.log(err))
@@ -20,7 +22,7 @@ const Movieedit = (props) => {
     }
   return (
     <div>
-      <TextField name="MovieID" label="MovieID"  value={inputs.MovieID} variant="outlined" onChange={inputHandler}/><br/><br/>
+      <TextField name="MovieId" label="MovieID"  value={inputs.MovieId} variant="outlined" onChange={inputHandler}/><br/><br/>
       <TextField  name="MovieName"  label="MovieName"  value={inputs.MovieName} variant="outlined" onChange={inputHandler}/><br/><br/>
       <TextField  name="Discription"  label="Discription"  value={inputs.Discription} variant="outlined" onChange={inputHandler}/><br/><br/>
       <FormControl sx={{m:1,minWidth:120}}>

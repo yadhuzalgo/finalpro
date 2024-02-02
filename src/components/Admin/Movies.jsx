@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const Movies = () => {
     var [inputs,setInputs]=useState({
-        "MovieID":'',
+        "MovieId":'',
          "MovieName":'',
          "Discription":'',
          "Language":'English',
@@ -47,7 +47,7 @@ const Movies = () => {
  
   return (
     <div className='yad'>
-      <br/><TextField name="MovieID" label="MovieID"  value={inputs.MovieID} variant="outlined" onChange={inputHandler}/><br/><br/>
+      <br/><TextField name="MovieId" label="MovieID"  value={inputs.MovieId} variant="outlined" onChange={inputHandler}/><br/><br/>
       <TextField  name="MovieName"  label="MovieName"  value={inputs.MovieName} variant="outlined" onChange={inputHandler}/><br/><br/>
       <TextField  name="Discription"  label="Discription"  value={inputs.Discription} variant="outlined" onChange={inputHandler}/><br/><br/>
       <FormControl sx={{m:1,minWidth:120}}>

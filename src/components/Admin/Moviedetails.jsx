@@ -20,10 +20,11 @@ const Moviedetails = () => {
  const updateValues=(row)=>{
     setSelected(row)
     setUpdate(true)
- }  
+ } 
+
  var result=
       <div>
-          <TableContainer component={Paper}>
+          <TableContainer component={Paper }>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
@@ -36,7 +37,7 @@ const Moviedetails = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {movie.map((row, pos) => {
+                        {movie.map((row,pos) => {
                             return (
                                 <TableRow key={pos}
                                 >
@@ -47,7 +48,6 @@ const Moviedetails = () => {
                                     <TableCell >{row.Language}</TableCell>
                                     <TableCell >{row.Genre}</TableCell>
                                     <TableCell><EditIcon onClick={()=>updateValues(row)}/></TableCell>
-                                    
                                 </TableRow>
                             )
                         })}
@@ -55,9 +55,10 @@ const Moviedetails = () => {
                 </Table>
             </TableContainer> 
       </div>
-      if(result)
+      if(update)
       result=<Movieedit data={selected}method='put'/>
   return (result)
 }
+
 
 export default Moviedetails
