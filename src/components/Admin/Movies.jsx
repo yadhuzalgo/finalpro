@@ -7,7 +7,7 @@ const Movies = () => {
   var [inputs, setInputs] = useState({
     "MovieId": '',
     "MovieName": '',
-    "Discription": '',
+    "Description": '',
     "Language": 'English',
     "Genre": 'Action',
       });
@@ -31,14 +31,15 @@ const Movies = () => {
   const file =event.target.files[0]
   setSelectedimage(file)
   inputs.image1=file;
-  console.log(setSelectedimage);
+  // console.log(setSelectedimage);
  }
 
 const saveData = () => {
  const formdata=new FormData();
+ console.log(inputs.Genre)
   formdata.append('MovieId', inputs.MovieId);
   formdata.append('MovieName', inputs.MovieName);
-  formdata.append('Discription', inputs.Discription);
+  formdata.append('Description', inputs.Description);
   formdata.append('Language', inputs.Language);
   formdata.append('Genre', inputs.Genre);
   formdata.append('image1',selectedimage);
@@ -60,7 +61,7 @@ const saveData = () => {
     <div className='yad'>
       <br /><TextField name="MovieId" label="MovieID" value={inputs.MovieId} variant="outlined" onChange={inputHandler} /><br /><br />
       <TextField name="MovieName" label="MovieName" value={inputs.MovieName} variant="outlined" onChange={inputHandler} /><br /><br />
-      <TextField name="Discription" label="Discription" value={inputs.Discription} variant="outlined" onChange={inputHandler} /><br /><br />
+      <TextField name="Description" label="Description" value={inputs.Description} variant="outlined" onChange={inputHandler} /><br /><br />
       <FormControl sx={{ m: 1, minWidth: 120 }}>
         <InputLabel name="Language" id="demo-simple-select-label">Language</InputLabel>
         <Select

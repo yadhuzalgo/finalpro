@@ -24,7 +24,7 @@ const Movieedit = (props) => {
     <div>
       <TextField name="MovieId" label="MovieID"  value={inputs.MovieId} variant="outlined" onChange={inputHandler}/><br/><br/>
       <TextField  name="MovieName"  label="MovieName"  value={inputs.MovieName} variant="outlined" onChange={inputHandler}/><br/><br/>
-      <TextField  name="Discription"  label="Discription"  value={inputs.Discription} variant="outlined" onChange={inputHandler}/><br/><br/>
+      <TextField  name="Description"  label="Description"  value={inputs.Description} variant="outlined" onChange={inputHandler}/><br/><br/>
       <FormControl sx={{m:1,minWidth:120}}>
       <InputLabel name="Genre" id="demo-simple-select-label">Language</InputLabel>            
       <Select

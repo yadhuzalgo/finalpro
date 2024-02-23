@@ -47,7 +47,7 @@ const Moviedetails = () => {
                         <TableRow>
                             <TableCell>MovieId</TableCell>
                             <TableCell>MovieName</TableCell>
-                            <TableCell>Discription</TableCell>
+                            <TableCell>Description</TableCell>
                             <TableCell>Language</TableCell>
                             <TableCell>Genre</TableCell>
                             <TableCell>Image</TableCell> {/* Added image header */}
@@ -59,15 +59,11 @@ const Moviedetails = () => {
                             <TableRow key={pos}>
                                 <TableCell>{row.MovieId}</TableCell>
                                 <TableCell>{row.MovieName}</TableCell>
-                                <TableCell>{row.Discription}</TableCell>
+                                <TableCell>{row.Description}</TableCell>
                                 <TableCell>{row.Language}</TableCell>
                                 <TableCell>{row.Genre}</TableCell>
-                                <TableCell>
-                                    {row.image && row.image.data && ( // Added null checks 
-                                        <img src={`data:image/jpeg;base64,${Buffer.from(row.image.data).toString('base64')}`} width="50" height="50" alt="Error" />
-
-                                    )}
-                                </TableCell>
+                                <TableCell><img src={`data:image/jpeg;base64,${Buffer.from(row.image1.data).toString('base64')}`} width="50" height="50" alt="Error" />
+                                                                 </TableCell>
                                 <TableCell>
                                     <EditIcon onClick={() => updateValues(row)} />
                                 </TableCell>
