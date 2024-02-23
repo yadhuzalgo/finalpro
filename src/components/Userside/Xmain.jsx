@@ -1,6 +1,7 @@
-import { CircularProgress, Container, Grid, Paper, Typography } from '@mui/material';
+import { CircularProgress, Container, Grid, Paper, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 import { Buffer } from 'buffer';
 
 const Moviedetails = () => {
@@ -44,15 +45,21 @@ const Moviedetails = () => {
                 {movies.map((movie, index) => (
                     <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
                         <Paper elevation={3} style={{ padding: '20px', textAlign: 'center', height: '100%' }}>
-                        {movie.image1 && (
+                            {movie.image1 && (
                                 <img src={`data:image/jpeg;base64,${Buffer.from(movie.image1.data).toString('base64')}`} style={{ marginTop: '20px', maxWidth: '100%' }} alt="Movie" />
                             )}
                             <Typography variant="subtitle1" gutterBottom><strong>{movie.MovieName}</strong></Typography>
+                            
                             <Typography variant="body2" gutterBottom><strong>Language:</strong> {movie.Language}</Typography>
                             <Typography variant="body2" gutterBottom><strong>Genre:</strong> {movie.Genre}</Typography>
-                            <Typography variant="body2" gutterBottom><strong>Description:</strong>{movie.Description}</Typography>
-
-                            
+                            <Accordion>
+                                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                    <Typography variant="body2" gutterBottom><strong>Description:</strong></Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Typography variant="body2">{movie.Description}</Typography>
+                                </AccordionDetails>
+                            </Accordion>
                         </Paper>
                     </Grid>
                 ))}
